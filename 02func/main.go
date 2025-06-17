@@ -14,7 +14,8 @@ func main() {
 	// learn02Variable()
 	// learn03Inputs()
 	// learn04Pointers()
-	learn05Bufio()
+	// learn05Bufio()
+	learn06Printf()
 }
 
 func learn02Variable() {
@@ -102,7 +103,8 @@ func learn05Bufio() {
 	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Print("Enter your full name: ")
-	name, _ := reader.ReadString('\n') // _ is used to ignore the error returned by ReadString
+	// _ is used to ignore the error returned by ReadString. What kind of error can be returned? EOF error if the input is empty or if there is an error reading from the input stream.
+	name, _ := reader.ReadString('\n')
 	fmt.Println("Your name is:", name)
 
 	fmt.Print("Enter your favorite number: ")
@@ -112,4 +114,33 @@ func learn05Bufio() {
 	fmt.Print("Enter your fun fact: ")
 	funFact, _ := reader.ReadString('\n')
 	fmt.Println("Your fun fact is:", funFact)
+
+	bookReader := bufio.NewReader(os.Stdin)
+	fmt.Print("What is your favorite author? ")
+	author, _ := bookReader.ReadString('\n')
+	fmt.Println("Your favorite author is:", author)
+
+	fmt.Println("What is your book title from", author, "?")
+	bookTitle, _ := bookReader.ReadString('\n')
+	fmt.Println("Your book title is:", bookTitle)
+
+	fmt.Printf("What is the year of publication for %s?", bookTitle)
+	year, _ := bookReader.ReadString('\n')
+	fmt.Println("The year of publication is:", year)
+}
+
+func learn06Printf() {
+	// fmt.Printf is used to format the output
+	// %s is used to format a string
+	// %d is used to format an integer
+	// %f is used to format a float
+	// %t is used to format a boolean
+	// %v is used to format any value
+	// %T is used to print the type of a value
+
+	name := "gissele simbana"
+	luckyNumber := 9
+	favoriteDrink := "matcha"
+
+	fmt.Printf("My name is %s, my lucky number is %d, and my favorite drink is %s. The data types are %T, %T, and %T.\n", name, luckyNumber, favoriteDrink, name, luckyNumber, favoriteDrink)
 }
