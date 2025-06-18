@@ -4,19 +4,9 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
+	"time"
 )
-
-func main() {
-	// fmt.Println("gissele simbana")
-	// fmt.Println("9")
-	// fmt.Println("I love matcha")
-
-	// learn02Variable()
-	// learn03Inputs()
-	// learn04Pointers()
-	// learn05Bufio()
-	learn06Printf()
-}
 
 func learn02Variable() {
 	var luckyNumber uint8 = 9
@@ -143,4 +133,71 @@ func learn06Printf() {
 	favoriteDrink := "matcha"
 
 	fmt.Printf("My name is %s, my lucky number is %d, and my favorite drink is %s. The data types are %T, %T, and %T.\n", name, luckyNumber, favoriteDrink, name, luckyNumber, favoriteDrink)
+}
+
+func learn07Loop() {
+	fmt.Println("1 to 20")
+	for index := 1; index <= 20; index++ {
+		// x := math.Pow(float64(index), 2)
+		fmt.Print(index, " ")
+	}
+
+	fmt.Println("\nOdd numbers between 1 to 20")
+	for index := 1; index <= 20; index = index + 2 {
+		// x := math.Pow(float64(index), 2)
+		fmt.Print(index, " ")
+	}
+
+	var alphabets int8
+	fmt.Println("\nA to Z")
+	for alphabets = 0; alphabets < 26; alphabets++ {
+		char := string('A' + alphabets)
+		fmt.Print(char, " ")
+	}
+
+	// 2nd solution
+	// String data type must always be double-quoted. A rune/char datatype it must reside in single quotation. rune/char will be shown as int32 datatype.
+	fmt.Println("\nA to Z")
+	for abUpp := 'A'; abUpp <= 'Z'; abUpp++ {
+		fmt.Printf("%c ", abUpp)
+	}
+}
+
+func learn07LoopAlphaChar() {
+	word := "Hello Coders"
+	for i, r := range word {
+		fmt.Printf("Character %d: %c = %d\n", i, r, r)
+	}
+	fmt.Println(word)
+}
+
+func greet(name string) *string {
+	temp := "Hello, " + name + " :) "
+	return &temp
+}
+
+func learn07Function() {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Println("Please Enter Your Name: ")
+	name, _ := reader.ReadString('\n')
+	name = strings.TrimSpace(name)
+	messageTest := greet(name)
+	fmt.Println(messageTest, *messageTest)
+}
+
+func main() {
+	start := time.Now()
+
+	// learn02Variable()
+	// learn03Inputs()
+	// learn04Pointers()
+	// learn05Bufio()
+	// learn06Printf()
+	// learn07Loop()
+	// learn07LoopAlphaChar()
+	learn07Function()
+
+	elapsed := time.Since(start)
+	fmt.Println("")
+	fmt.Printf("Execution took %s", elapsed)
 }
