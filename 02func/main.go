@@ -185,6 +185,58 @@ func learn07Function() {
 	fmt.Println(messageTest, *messageTest)
 }
 
+// Create our own specific datatype
+type Student struct {
+	Name   string
+	School string
+	Year   uint16
+}
+
+type Employee struct {
+	name   string
+	age    uint8
+	job    string
+	salary uint16
+}
+
+func learn09SrtructStudent() {
+	student1 := Student{
+		Name:   "Vahid Mafi",
+		School: "01 Founders",
+		Year:   2025,
+	}
+
+	fmt.Printf("%%", student1)
+}
+
+func learn09StructEmployee() {
+	var pers1, pers2, pers3 Employee
+	pers1.name = "Yasin"
+	pers1.age = 20
+	pers1.job = "IT"
+	pers1.salary = 2000
+
+	pers2.name = "Yasin"
+	pers2.age = 20
+	pers2.job = "IT"
+	pers2.salary = 2000
+
+	pers3.name = "Yasin"
+	pers3.age = 20
+	pers3.job = "IT"
+	pers3.salary = 2000
+
+	printPerson(pers1)
+
+}
+
+func printPerson(person Employee) {
+	fmt.Printf("Name: %s \n", person.name)
+	fmt.Printf("Age: %s \n", person.age)
+	fmt.Printf("Job: %s \n", person.job)
+	fmt.Printf("Salary: %s \n", person.salary)
+}
+
 func main() {
 	start := time.Now()
 
@@ -195,7 +247,8 @@ func main() {
 	// learn06Printf()
 	// learn07Loop()
 	// learn07LoopAlphaChar()
-	learn07Function()
+	// learn07Function()
+	learn09SrtructStudent()
 
 	elapsed := time.Since(start)
 	fmt.Println("")
